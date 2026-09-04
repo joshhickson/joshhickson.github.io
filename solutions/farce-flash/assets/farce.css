@@ -244,6 +244,43 @@ ul.contents li::before { content: "\2013"; color: var(--muted); flex: none; }
 /* The unlock text wraps rather than pushing the page sideways on a phone. */
 .goals b { color: var(--accent); font-weight: 400; min-width: 0; }
 
+/* ------------------------------------------------------------- repository */
+
+.repo-card {
+  margin-top: var(--s6); padding: var(--s5);
+  border: 1px solid var(--rule); background: var(--surface);
+  max-width: 38rem;
+}
+.repo-card.compact { margin-top: var(--s5); }
+
+.repo-eyebrow {
+  display: flex; gap: var(--s4); flex-wrap: wrap; margin: 0 0 var(--s3);
+  font: 400 .68rem/1 var(--mono); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted);
+}
+.repo-status { color: var(--accent); }
+
+.repo-name { margin: 0 0 var(--s3); font: 600 1.1rem/1.3 var(--mono);
+             letter-spacing: -.02em; overflow-wrap: anywhere; }
+.repo-name a { color: var(--accent); text-decoration: none;
+               box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 40%, transparent); }
+.repo-name a:hover { box-shadow: 0 1px 0 var(--accent); }
+
+.repo-desc { margin: 0 0 var(--s4); font-size: .92rem; color: var(--text); }
+.repo-card.compact .repo-desc { display: none; }
+
+/* The clone line is what a reader actually wants, so it is selectable and
+   sized to be read rather than decorated. */
+.repo-clone {
+  margin: 0; padding: var(--s3) var(--s4); overflow-x: auto;
+  border: 1px solid var(--rule); background: var(--bg);
+}
+.repo-clone code { color: var(--text); font-size: .86rem; white-space: pre; }
+
+.nav a.nav-ext::after {
+  content: "\2197"; margin-left: .25em; font-size: .9em; color: var(--muted);
+}
+
 /* ------------------------------------------------------- endurance counter */
 
 .counter {
