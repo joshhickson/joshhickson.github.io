@@ -422,3 +422,93 @@ figcaption {
   .refs a::after { content: " (" attr(href) ")"; font-size: 8pt; color: #555; }
   .byline { border-left: 2px solid #ccc; }
 }
+
+/* ======================================================================= */
+/* Small screens                                                            */
+/*                                                                          */
+/* The layout was already fluid and never overflowed, which hid three things */
+/* that only measurement finds. At 375px: the sticky chrome was 155px tall,  */
+/* a fifth of the viewport; nav rows were 20px and footer links 15px, well   */
+/* under the 44px a thumb needs; and the diagrams rendered their 11px labels */
+/* at 3 to 6px, because a 620- or 1200-unit drawing scaled into a 327px      */
+/* column is a texture, not a diagram.                                       */
+/* ======================================================================= */
+
+@media (max-width: 46rem) {
+
+  /* The strip repeats the company name and the domain. Both are in the
+     masthead and the footer; on a phone it is 29px of nothing. */
+  .top { display: none; }
+
+  /* The nav wrapped to three rows and the sticky header grew to 126px. One
+     row that scrolls sideways instead, so the header costs about 52px. */
+  .masthead .wrap { flex-wrap: nowrap; gap: var(--s4); padding-block: var(--s2); }
+  .brand { margin-right: 0; flex: none; font-size: .92rem; }
+  .nav { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain;
+         scrollbar-width: none; min-width: 0; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { white-space: nowrap; }
+
+  /* Drawings keep their natural size and the figure scrolls — the answer the
+     wide tables already use. Photographs still fit the column. */
+  figure, .figure-bus { overflow-x: auto; overscroll-behavior-x: contain; }
+  figure svg, .figure-bus svg { width: auto; max-width: none; }
+  figure.photo { overflow: visible; }
+  figure.photo img { max-width: 100%; }
+
+  /* Labels below about 12px stop being readable held at arm's length. */
+  .eyebrow, .hero-id, blockquote.pull cite,
+  .tier .cap, .tier .contents-label, .counter-label, .counter-unit,
+  .repo-eyebrow, .status, th { font-size: .75rem; }
+  ul.contents { font-size: .88rem; }
+  .foot nav, .foot .legal, .toc ol, .refs, .tier .assembly,
+  .counter-note, .cta-note { font-size: .82rem; }
+
+  /* The tier grid asks for a 19rem minimum track. On a 320px screen the column
+     is 272px, so the track pushed the page 8px wide. One tier per row instead. */
+  .tiers { grid-template-columns: 1fr; }
+  .tier { padding: var(--s4); }
+
+  /* Sections were spaced for a wide screen; on a phone that is dead scrolling. */
+  .sec { padding-block: var(--s6); }
+  .hero { padding-block: var(--s6) var(--s5); }
+  .foot .cols { gap: var(--s5); }
+  .lanes { margin-top: var(--s6); }
+
+  /* The header is shorter now, so anchored headings need less clearance. */
+  .doc h2, .doc h3, .qa h3, .refs li { scroll-margin-top: 3.5rem; }
+}
+
+/* A right-edge fade that scrolls away at the end: the only cue that a figure,
+   a table or the nav has more to the right. The `local` layer travels with the
+   content and covers the `scroll` layer once there is nothing left to reach. */
+@media (max-width: 46rem) {
+  figure, .figure-bus, .tbl-wrap, .nav, .repo-clone {
+    background:
+      linear-gradient(270deg, var(--bg) 40%, transparent)
+        right center / 28px 100% no-repeat local,
+      radial-gradient(farthest-side at 100% 50%,
+        color-mix(in srgb, var(--accent) 26%, transparent), transparent)
+        right center / 12px 100% no-repeat scroll;
+  }
+}
+
+/* Touch targets. Apple asks for 44px, Android for 48dp; navigation rows were
+   20px and footer links 15px. This is scoped to navigation only — a link
+   inside a sentence has to stay inline, and growing it would break the line. */
+@media (pointer: coarse) {
+  .nav a, .foot nav a, .toc a, .qa .more {
+    min-height: 44px; display: inline-flex; align-items: center;
+  }
+  .cta { padding-block: var(--s4); }
+  .eyebrow .ref, .refs a, .tier .price { min-height: 32px; }
+}
+
+/* The last of the sub-12px text, and the focus ring for the scroll regions
+   above — they are focusable so a keyboard can reach what a thumb can swipe. */
+@media (max-width: 46rem) {
+  .foot .origin, figcaption, .qa .more { font-size: .8rem; }
+}
+figure:focus-visible, .tbl-wrap:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 4px;
+}
