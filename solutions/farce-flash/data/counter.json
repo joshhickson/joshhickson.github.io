@@ -1,0 +1,11 @@
+{
+ "_comment": "Live endurance counter state (addendum A5.3). Written by openfarce/tools/publish_counter.py once the reference rig runs. Until then state is 'pending' and the site says so. A8: never fabricate rig numbers.",
+ "state": "pending",
+ "days_elapsed": null,
+ "projected_days_remaining": null,
+ "waf_assumption": 5.0,
+ "logical_tb_written": null,
+ "throttle_events": null,
+ "updated": null,
+ "note": "The reference rig is not built yet. No endurance measurements exist."
+}

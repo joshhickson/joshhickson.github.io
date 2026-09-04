@@ -32,6 +32,10 @@
 <p><span class="status">Pre-alpha</span></p><p class="cta-note"><a href="/solutions/farce-flash/report/#operating-system">Read the OS analysis &#8594;</a></p><p class="cta-row"><a class="cta" href="https://github.com/joshhickson/openfarce">View the repository</a></p><p>The host operating system is the third problem, after signal integrity and heat, and it is the one that cannot be solved with better parts.</p>
 <h2>What it is</h2>
 <p>OpenFARCE is a user-space I/O layer for storage-backed inference on high-latency, low-queue-depth media. It replaces the kernel's memory hierarchy for one specific job: moving KV cache blocks between DRAM and an array of MicroSD cards fast enough that the decode loop does not stall.</p>
+<h2>The reference rig</h2>
+<p>Farce Systems runs a validation array: forty 32 GB cards in forty USB 3.0 readers, on four powered hubs, joined as a RAID 0 span and presented to the kernel as swap. Raw capacity is 1.28 TB; approximately 1.2 TB is usable after RAID metadata and reserved space.</p>
+<p><code>farce-assemble</code> brings the array up from cold boot, refusing to proceed if fewer than forty readers enumerate. <code>farce-bench</code> measures it. <code>farce-endure</code> runs a continuous write load and publishes the endurance counter. Every array figure published on this site comes from these tools.</p>
+<p><strong>Measured results:</strong> none yet. The rig is not built. Aggregate read is stated as "under 2 GB/s" and decode speed as the Feasibility Report's projection until the hardware exists and the benchmarks run.</p>
 <h2>Why the kernel is not enough</h2>
 <p>The Linux virtual file system does not accept that an array of removable SD cards is memory, and on the evidence it is not wrong.</p>
 <p><code>mmap()</code> with swap on a high-latency block device produces swap thrashing. The kernel spends its cycles moving 4 KB pages between DRAM and a device with random read latencies above 2,000 microseconds and a command queue one entry deep. Token generation stops. Where the resident set is large enough, the out-of-memory killer terminates the inference process before the first token.</p>

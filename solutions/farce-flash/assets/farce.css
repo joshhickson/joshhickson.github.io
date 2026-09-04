@@ -244,6 +244,39 @@ ul.contents li::before { content: "\2013"; color: var(--muted); flex: none; }
 /* The unlock text wraps rather than pushing the page sideways on a phone. */
 .goals b { color: var(--accent); font-weight: 400; min-width: 0; }
 
+/* ------------------------------------------------------- endurance counter */
+
+.counter {
+  margin-top: var(--s5); padding: var(--s5);
+  border: 1px solid var(--rule); max-width: 30rem;
+}
+.counter-label {
+  margin: 0 0 var(--s4); font: 400 .68rem/1 var(--mono);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+}
+.counter-big {
+  margin: 0 0 var(--s3); display: flex; align-items: baseline; gap: var(--s3);
+  font: 600 2rem/1 var(--mono); letter-spacing: -.03em; color: var(--accent);
+}
+.counter-unit {
+  font: 400 .72rem/1 var(--mono); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.counter-note {
+  margin: 0; font: 400 .78rem/1.6 var(--mono); color: var(--muted);
+}
+.counter-note abbr { text-decoration-style: dotted; cursor: help; }
+/* Nothing is measured yet, so the box says so rather than showing a zero. */
+.counter-pending { border-style: dashed; }
+
+/* The report page's one editorial insertion, marked as such. */
+.callout {
+  margin: var(--s5) 0 0; padding: var(--s4) var(--s5);
+  border-left: 2px solid var(--accent);
+  font: 400 .88rem/1.6 var(--mono); color: var(--text); max-width: 46rem;
+}
+.callout a { color: var(--accent); }
+
 /* ------------------------------------------------------------------ figures */
 
 figure { margin: var(--s6) 0 0; }
