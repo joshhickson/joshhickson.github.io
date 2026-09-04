@@ -73,14 +73,14 @@ h3 { font-size: 1.05rem; letter-spacing: -.01em; }
 strong { font-weight: 600; }
 code, kbd { font-family: var(--mono); font-size: .92em; color: var(--accent); }
 
-/* The array is the recurring structural device: 40 ticks, one per lane. */
+/* The array is the recurring structural device: one tick per lane, forty of
+   them, so the page is ruled by the thing it is selling. Percentages in a 90deg
+   gradient resolve against the element width, so no background-size is wanted. */
 .lanes {
-  height: 6px; border: 0; margin: var(--s8) 0 0;
-  background:
-    repeating-linear-gradient(90deg,
-      var(--rule) 0 1px,
-      transparent 1px calc(100% / var(--lanes)));
-  background-size: calc(100% / var(--lanes)) 100%;
+  height: 10px; border: 0; margin: var(--s8) 0 0;
+  background: repeating-linear-gradient(90deg,
+    var(--rule) 0 1px,
+    transparent 1px calc(100% / var(--lanes)));
 }
 
 /* ------------------------------------------------------------------- chrome */
