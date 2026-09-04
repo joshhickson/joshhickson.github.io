@@ -318,6 +318,13 @@ ul.contents li::before { content: "\2013"; color: var(--muted); flex: none; }
 
 figure { margin: var(--s6) 0 0; }
 figure svg { display: block; width: 100%; height: auto; max-width: 620px; }
+
+/* Photographs sit to the same measure as the diagrams. Without an explicit
+   max-width an <img> renders at its intrinsic size and pushes the page wide. */
+figure.photo img {
+  display: block; width: 100%; height: auto; max-width: 620px;
+  border: 1px solid var(--rule);
+}
 figcaption {
   margin-top: var(--s3); font: 400 .74rem/1.6 var(--mono); color: var(--muted);
   max-width: 46ch;
