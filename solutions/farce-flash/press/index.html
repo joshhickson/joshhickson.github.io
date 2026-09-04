@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Press kit — Farce Systems</title>
+<meta name="description" content="Boilerplate, fact sheet, and quotable lines from the feasibility report.">
+<meta property="og:title" content="Press kit — Farce Systems">
+<meta property="og:description" content="Boilerplate, fact sheet, and quotable lines from the feasibility report.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0C0F">
+<link rel="icon" href="/solutions/farce-flash/assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="/solutions/farce-flash/assets/farce.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<div class="top"><div class="wrap">
+<span>Farce Systems</span>
+<span><a href="/solutions/">jhickson.us/solutions</a></span>
+</div></div>
+<header class="masthead"><div class="wrap">
+<a class="brand" href="/solutions/farce-flash/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="F.A.R.C.E. Flash icon: a bolt through a MicroSD card outline" class="dg"><style>.dg-t{font-family:'IBM Plex Mono',ui-monospace,monospace;fill:#7D8894;font-size:11px;letter-spacing:.08em}.dg-v{font-family:'IBM Plex Mono',ui-monospace,monospace;fill:#E4E8ED;font-size:13px}.dg-a{fill:#FFB020}</style><path d="M21.92,6 L50,6 L50,58 L14,58 L14,13.92 Z" fill="none" stroke="#E4E8ED" stroke-width="1"/><path d="M35,16 L23,36 L31,36 L27,50 L41,29 L33,29 Z" class="dg-a"/></svg><span>F.A.R.C.E. <span class="lo">Flash</span></span></a>
+<nav class="nav" aria-label="F.A.R.C.E. Flash"><a href="/solutions/farce-flash/">Overview</a><a href="/solutions/farce-flash/kit/">Kits</a><a href="/solutions/farce-flash/report/">Report</a><a href="/solutions/farce-flash/openfarce/">OpenFARCE</a><a href="/solutions/farce-flash/faq/">FAQ</a><a href="/solutions/farce-flash/press/" aria-current="page">Press</a></nav>
+</div></header>
+<main id="main">
+<section class="sec"><div class="wrap">
+<p class="eyebrow"><span>Press</span></p>
+<div class="prose"><h1>Press kit — F.A.R.C.E. Flash</h1>
+<h2>Boilerplate, 50 words</h2>
+<p>Farce Systems builds open reference kits for memory-constrained machine learning. Its first design, the F.A.R.C.E. Flash — Flash Array for Resource-Constrained Environments — targets a 128 GB working set using a 40-lane parallel array of consumer MicroSD cards. Farce Systems commissioned and published an independent feasibility analysis of the architecture, unedited.</p>
+<p><em>(50 words)</em></p>
+<h2>Boilerplate, 100 words</h2>
+<p>Farce Systems builds open reference kits for memory-constrained machine learning. Its first design, the F.A.R.C.E. Flash — Flash Array for Resource-Constrained Environments — targets the 128 GB working set required by a 70-billion parameter model using a 40-lane parallel SDIO array of consumer MicroSD cards, at a fraction of the cost of the NVIDIA DGX Spark.</p>
+<p>Farce Systems ships reference kits, not products: every component is an off-the-shelf part with a public datasheet, and the PCB design, assembly guide, and OpenFARCE firmware are open source. Before designing the array, Farce Systems commissioned an independent feasibility analysis and published it unedited, conclusion included.</p>
+<p><em>(100 words)</em></p>
+<h2>Three headlines</h2>
+<ol>
+<li><strong>A hardware project wants to replace $4,700 of unified memory with forty MicroSD cards</strong></li>
+<li><strong>This startup commissioned a study of its own product. The study says it won't work. They published it anyway.</strong></li>
+<li><strong>Forty cards, 240 traces, and a 64-day lifespan: inside the F.A.R.C.E. Flash</strong></li>
+</ol>
+<h2>Fact sheet</h2>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Product</strong></td>
+<td>F.A.R.C.E. Flash Developer Kit</td>
+</tr>
+<tr>
+<td><strong>Expansion</strong></td>
+<td>Flash Array for Resource-Constrained Environments</td>
+</tr>
+<tr>
+<td><strong>Company</strong></td>
+<td>Farce Systems</td>
+</tr>
+<tr>
+<td><strong>Tagline</strong></td>
+<td>Memory, at scale, at retail.</td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td>OpenFARCE (open source, pre-alpha, not included in kits)</td>
+</tr>
+<tr>
+<td><strong>Community</strong></td>
+<td>Array Builders</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Architecture</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target working set (weights + KV cache)</td>
+<td>128 GB</td>
+</tr>
+<tr>
+<td>Array size, reference design</td>
+<td>40 MicroSD slots</td>
+</tr>
+<tr>
+<td>Card capacity shipped in kits</td>
+<td>32 GB, UHS-I, Class 10</td>
+</tr>
+<tr>
+<td>Raw array capacity, 40 x 32 GB</td>
+<td>1.28 TB</td>
+</tr>
+<tr>
+<td>SDIO signals per card</td>
+<td>6 (CLK, CMD, DAT0-3)</td>
+</tr>
+<tr>
+<td>Total high-speed traces, 40 cards</td>
+<td>240</td>
+</tr>
+<tr>
+<td>Trace spacing rule</td>
+<td>3W rule</td>
+</tr>
+<tr>
+<td>Peak 3.3 V rail draw, 40 cards writing</td>
+<td>~6 A / ~20 W</td>
+</tr>
+<tr>
+<td>Per-card write current</td>
+<td>100-150 mA</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Performance</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Per-card UHS-I ceiling</td>
+<td>104 MB/s</td>
+</tr>
+<tr>
+<td>Aggregate sequential read, 40 cards, ideal</td>
+<td>~4.1 GB/s</td>
+</tr>
+<tr>
+<td>Projected decode speed</td>
+<td>1.5-3.0 tok/s</td>
+</tr>
+<tr>
+<td>Projected TTFT at 32K context</td>
+<td>45-60 s</td>
+</tr>
+<tr>
+<td>70B model at 1.58-bit</td>
+<td>~13.8 GB</td>
+</tr>
+<tr>
+<td>70B model at 8-bit</td>
+<td>~70 GB</td>
+</tr>
+<tr>
+<td>KV cache, 128K context, FP8</td>
+<td>~20 GB</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Thermal and endurance</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thermal throttle threshold</td>
+<td>70-85 °C</td>
+</tr>
+<tr>
+<td>Throttled speed</td>
+<td>&lt;10 MB/s</td>
+</tr>
+<tr>
+<td>Consumer card P/E cycles</td>
+<td>1,000-3,000</td>
+</tr>
+<tr>
+<td>pSLC card P/E cycles</td>
+<td>up to 60,000</td>
+</tr>
+<tr>
+<td>Assumed WAF under LLM load</td>
+<td>5.0 conservative, 10.0+ realistic</td>
+</tr>
+<tr>
+<td>Array lifespan under continuous load</td>
+<td>~64 days</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Reference: NVIDIA DGX Spark</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$4,700</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>128 GB unified</td>
+</tr>
+<tr>
+<td>Bandwidth</td>
+<td>&gt;500 GB/s</td>
+</tr>
+<tr>
+<td>70B 8-bit decode</td>
+<td>40-60 tok/s</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>The NVIDIA DGX Spark is a product of NVIDIA Corporation. Farce Systems has no affiliation with NVIDIA.</em></p>
+<h3>Kits</h3>
+<div class="tbl-wrap"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Price</th>
+<th>Cap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reader</td>
+<td>$1</td>
+<td>uncapped</td>
+</tr>
+<tr>
+<td>Single Lane</td>
+<td>$29</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Founder's Array (8-lane)</td>
+<td>$169</td>
+<td>40</td>
+</tr>
+<tr>
+<td>Datacenter (24-lane)</td>
+<td>$479</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Full Array (40-lane)</td>
+<td>$799</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Bare Array (40-lane, media not included)</td>
+<td>$219</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Endurance Pack (add-on)</td>
+<td>$119</td>
+<td>50</td>
+</tr>
+<tr>
+<td>Thermal Pack (add-on)</td>
+<td>$19</td>
+<td>50</td>
+</tr>
+</tbody>
+</table></div>
+<p>No kit contains a fabricated PCB, an enclosure, assembled hardware, or software. Full contents lists are published per tier.</p>
+<h2>Report</h2>
+<p><strong>Feasibility Analysis of MicroSD-Backed LLM Inference Architectures.</strong> Commissioned by Farce Systems, published unedited, including its conclusion that the architecture is impractical. Prepared with AI research tooling; reviewed for consistency, not corrected.</p>
+<p>Full text, with section anchors, at <code>/solutions/farce-flash/report/</code>.</p>
+<p>Quotable, verbatim:</p>
+<blockquote>
+<p>a monument to the lengths to which engineers will go to avoid purchasing enterprise hardware</p>
+<p>It is functionally the equivalent of watching a human type.</p>
+<p>machine learning can indeed run in a flash</p>
+</blockquote>
+<h2>Assets</h2>
+<p>Wordmark, icon, board renders, architecture diagrams, and 1200x630 social cards: <code>/solutions/farce-flash/press/</code></p>
+<h2>Contact</h2>
+<p>hello@jhickson.us</p></div></div></section>
+</main>
+<footer class="foot"><div class="wrap"><div class="cols">
+<p class="legal">F.A.R.C.E. Flash is a satirical project. The Feasibility Report is real and concludes the architecture is impractical. Kits contain exactly the off-the-shelf parts listed and nothing else. No performance is promised. <a href="/solutions/farce-flash/disclaimer/">Full disclaimer</a>.</p>
+<nav aria-label="Footer"><a href="/solutions/farce-flash/">Overview</a><a href="/solutions/farce-flash/kit/">Kits</a><a href="/solutions/farce-flash/report/">Report</a><a href="/solutions/farce-flash/openfarce/">OpenFARCE</a><a href="/solutions/farce-flash/faq/">FAQ</a><a href="/solutions/farce-flash/press/">Press</a><a href="/solutions/farce-flash/disclaimer/">Disclaimer</a></nav>
+</div>
+<p class="origin">Farce Systems &#183;
+<a href="/solutions/">jhickson.us/solutions</a></p>
+</div></footer>
+</body>
+</html>

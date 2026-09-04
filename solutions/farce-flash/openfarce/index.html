@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenFARCE — Farce Systems</title>
+<meta name="description" content="A user-space I/O layer for storage-backed inference on high-latency media. Pre-alpha. Not included in any kit.">
+<meta property="og:title" content="OpenFARCE — Farce Systems">
+<meta property="og:description" content="A user-space I/O layer for storage-backed inference on high-latency media. Pre-alpha. Not included in any kit.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0C0F">
+<link rel="icon" href="/solutions/farce-flash/assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="/solutions/farce-flash/assets/farce.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<div class="top"><div class="wrap">
+<span>Farce Systems</span>
+<span><a href="/solutions/">jhickson.us/solutions</a></span>
+</div></div>
+<header class="masthead"><div class="wrap">
+<a class="brand" href="/solutions/farce-flash/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="F.A.R.C.E. Flash icon: a bolt through a MicroSD card outline" class="dg"><style>.dg-t{font-family:'IBM Plex Mono',ui-monospace,monospace;fill:#7D8894;font-size:11px;letter-spacing:.08em}.dg-v{font-family:'IBM Plex Mono',ui-monospace,monospace;fill:#E4E8ED;font-size:13px}.dg-a{fill:#FFB020}</style><path d="M21.92,6 L50,6 L50,58 L14,58 L14,13.92 Z" fill="none" stroke="#E4E8ED" stroke-width="1"/><path d="M35,16 L23,36 L31,36 L27,50 L41,29 L33,29 Z" class="dg-a"/></svg><span>F.A.R.C.E. <span class="lo">Flash</span></span></a>
+<nav class="nav" aria-label="F.A.R.C.E. Flash"><a href="/solutions/farce-flash/">Overview</a><a href="/solutions/farce-flash/kit/">Kits</a><a href="/solutions/farce-flash/report/">Report</a><a href="/solutions/farce-flash/openfarce/" aria-current="page">OpenFARCE</a><a href="/solutions/farce-flash/faq/">FAQ</a><a href="/solutions/farce-flash/press/">Press</a></nav>
+</div></header>
+<main id="main">
+<section class="sec"><div class="wrap">
+<p class="eyebrow"><span>Software</span></p>
+<div class="prose"><h1>OpenFARCE</h1>
+<p><span class="status">Pre-alpha</span></p><p class="cta-note"><a href="/solutions/farce-flash/report/#operating-system">Read the OS analysis &#8594;</a></p><p class="cta-row"><a class="cta" href="https://github.com/joshhickson/openfarce">View the repository</a></p><p>The host operating system is the third problem, after signal integrity and heat, and it is the one that cannot be solved with better parts.</p>
+<h2>What it is</h2>
+<p>OpenFARCE is a user-space I/O layer for storage-backed inference on high-latency, low-queue-depth media. It replaces the kernel's memory hierarchy for one specific job: moving KV cache blocks between DRAM and an array of MicroSD cards fast enough that the decode loop does not stall.</p>
+<h2>Why the kernel is not enough</h2>
+<p>The Linux virtual file system does not accept that an array of removable SD cards is memory, and on the evidence it is not wrong.</p>
+<p><code>mmap()</code> with swap on a high-latency block device produces swap thrashing. The kernel spends its cycles moving 4 KB pages between DRAM and a device with random read latencies above 2,000 microseconds and a command queue one entry deep. Token generation stops. Where the resident set is large enough, the out-of-memory killer terminates the inference process before the first token.</p>
+<h2>What it does instead</h2>
+<p><strong>Locks the resident model.</strong> Weights are held with <code>--mlock</code> so the kernel cannot page out the one thing that must never leave DRAM. At 1.58-bit ternary quantization a 70B model is approximately 13.8 GB, which fits.</p>
+<p><strong>Bypasses the VFS.</strong> Reads and writes go to the raw block devices through asynchronous I/O, not through the page cache. There is no file system on the array.</p>
+<p><strong>Prefetches from the attention pattern.</strong> The scheduler reads which KV blocks the next decode step will need and issues scatter-gather reads for them while the current token is still computing.</p>
+<p><strong>Writes in 256-token chunks.</strong> Sequential, contiguous writes are the only pattern a UHS-I bus is good at, and the only pattern that keeps write amplification below the point where the array dies faster than it is replaced.</p>
+<h2>Status</h2>
+<p><strong>Pre-alpha.</strong> OpenFARCE is not finished, has no release, and is not included in any kit. There is no date. Nothing in a F.A.R.C.E. Flash Developer Kit will run a language model when it arrives.</p>
+<p>The reference PCB design, the assembly guide, and OpenFARCE are published under an open license. If the array outlives the software, that is the expected order.</p></div></div></section>
+</main>
+<footer class="foot"><div class="wrap"><div class="cols">
+<p class="legal">F.A.R.C.E. Flash is a satirical project. The Feasibility Report is real and concludes the architecture is impractical. Kits contain exactly the off-the-shelf parts listed and nothing else. No performance is promised. <a href="/solutions/farce-flash/disclaimer/">Full disclaimer</a>.</p>
+<nav aria-label="Footer"><a href="/solutions/farce-flash/">Overview</a><a href="/solutions/farce-flash/kit/">Kits</a><a href="/solutions/farce-flash/report/">Report</a><a href="/solutions/farce-flash/openfarce/">OpenFARCE</a><a href="/solutions/farce-flash/faq/">FAQ</a><a href="/solutions/farce-flash/press/">Press</a><a href="/solutions/farce-flash/disclaimer/">Disclaimer</a></nav>
+</div>
+<p class="origin">Farce Systems &#183;
+<a href="/solutions/">jhickson.us/solutions</a></p>
+</div></footer>
+</body>
+</html>
