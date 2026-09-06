@@ -37,6 +37,79 @@ which is why this company exists.</p>
 <p>Buy the NVIDIA DGX Spark. If you cannot, buy nothing yet. What follows is the
 detail, because you should not take our word for it either.</p>
 <hr>
+<h2>How big a model can it run?</h2>
+<p>This is the question people ask second, and the answer is the most interesting
+thing about the machine.</p>
+<p><strong>On capacity alone: about 6 trillion parameters.</strong> At the report's 1.58-bit
+ternary compression, the array holds more parameters than any model published
+anywhere. On that measure we beat everything.</p>
+<p>Now the other half. To produce one word, a normal model has to read <strong>every
+weight it has.</strong> So what decides speed is not how much you can store, it is how
+fast you can read it back — and reading the full array once takes
+<strong>4.9 minutes</strong>. That six-trillion-parameter model would fit, and would
+spend about two days on a single paragraph. It would never finish a sentence.</p>
+<p>So the array is not where the model goes.</p>
+<h3>It is not a model size. It is a memory.</h3>
+<p>The one configuration the Feasibility Report is willing to call <em>theoretically
+possible</em> keeps the model itself in ordinary host memory — ~13.8 GB, small
+— and gives the array a different job: holding the <strong>conversation history</strong>.</p>
+<p>The array is 1.28 TB raw — approximately 1.2 TB usable once it is formatted and
+striped. Measured as history, that is roughly <strong>7.7 million
+tokens</strong> — around 5.8 million words of things the model can still see, or
+sixty times a 128,000-token context window.</p>
+<p>That is the number we would like to put on the poster.</p>
+<h3>Why we are not going to</h3>
+<p>Every new word makes the model re-read the entire history. Storing
+7.7 million tokens is not the problem; <strong>reading it back, once per word, is.</strong></p>
+<div class="tbl-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>History kept</th>
+<th>Time to read it, per word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32,000 tokens</td>
+<td>1.2 seconds</td>
+</tr>
+<tr>
+<td>128,000 tokens</td>
+<td>4.9 seconds</td>
+</tr>
+<tr>
+<td>1,000,000 tokens</td>
+<td>38 seconds</td>
+</tr>
+<tr>
+<td>The whole array</td>
+<td>4.9 minutes</td>
+</tr>
+</tbody>
+</table></div>
+<p>At a five-second budget per word, the usable history is about
+<strong>131,000 tokens</strong> — <strong>1.7% of what physically fits.</strong></p>
+<p>An NVIDIA DGX Spark reads that same 128,000-token history in
+<strong>0.04 seconds</strong>. We take <strong>4.9 seconds</strong>. On the row that decides
+whether the thing is usable, we are <strong>122 times slower</strong>.</p>
+<p>So the whole array buys a working memory about the size of the $4,700
+machine's window, and takes 122 times longer to consult it. We have
+checked this arithmetic more than once, hoping to find an error in our favour.</p>
+<h3>One more number, which we did not go looking for</h3>
+<p>Filling 7.7 million tokens at 1.5-3.0 tok/s takes <strong>30 to 59 days</strong>.</p>
+<p>The cards are projected to wear out after <strong>~64 days</strong>.</p>
+<p>You can fill the memory almost exactly once. The array dies at roughly the
+moment it is full.</p>
+<h3>A note on our own report</h3>
+<p>The Feasibility Report gives both a decode speed of 1.5-3.0 tok/s and a
+~20 GB cache at a 128,000-token context. Our arithmetic above cannot make
+those two agree: at that cache size, one read per word is 4.9 seconds, which
+is not 1.5-3.0 tok/s. The decode figure appears to describe a much shorter
+context, closer to ten thousand tokens.</p>
+<p>We are not going to reconcile them by choosing the flattering one. Both are
+published as written, and this paragraph is here so that you find the
+discrepancy from us rather than on your own.</p>
+<hr>
 <h2>What you are actually comparing</h2>
 <p>Two numbers get confused constantly, and the whole decision turns on telling
 them apart.</p>
