@@ -512,3 +512,10 @@ figcaption {
 figure:focus-visible, .tbl-wrap:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 4px;
 }
+
+/* A bare URL in prose is one long unbreakable word. The report's reference list
+   already handles this; a link in a paragraph did not, and the disclaimer's
+   github.com URL pushed a 320px screen sideways. `anywhere` rather than
+   `break-word` because only `anywhere` reduces the min-content width, which is
+   what actually stops the overflow. */
+.prose a, .plain a, .qa a, .feat a { overflow-wrap: anywhere; }

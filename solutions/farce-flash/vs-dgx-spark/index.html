@@ -110,6 +110,80 @@ context, closer to ten thousand tokens.</p>
 published as written, and this paragraph is here so that you find the
 discrepancy from us rather than on your own.</p>
 <hr>
+<h2>What you plug it into</h2>
+<p>We should have led with this and did not.</p>
+<p><strong>There is no computer in any kit, and you need one.</strong> The array is a
+peripheral. It does nothing on its own — it is forty card readers that a Linux
+machine treats as one large, slow disk.</p>
+<p>The configuration the report calls possible keeps the model's weights in the
+host's own memory, so that machine needs <strong>32 GB of RAM</strong>, a spare
+Linux install, and enough USB to talk to forty readers at once. It also runs
+hot and thrashes, so it should not be the laptop you work on.</p>
+<h3>The part that changes the numbers</h3>
+<p>~4.1 GB/s is <strong>forty cards times their 104 MB/s rating.</strong> It is
+what the media could supply. It is not what a computer will get out of them,
+because everything has to fit through the host's USB controllers, and one USB 3.0
+controller carries about <strong>~450 MB/s</strong>.</p>
+<div class="tbl-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th>What you plug it into</th>
+<th>What the array can actually deliver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A typical desktop, one USB 3 controller</td>
+<td>~0.45 GB/s — 11% of the ceiling</td>
+</tr>
+<tr>
+<td>Desktop plus one PCIe USB card</td>
+<td>~0.9 GB/s — 22%</td>
+</tr>
+<tr>
+<td>Desktop plus two four-controller cards</td>
+<td>~4.05 GB/s — 99%, and an unusual machine</td>
+</tr>
+</tbody>
+</table></div>
+<p>Reaching ~4.1 GB/s takes <strong>9 independent USB 3.0
+controllers.</strong> Most desktops have one. Adding hubs does not help: a hub shares
+one uplink, it does not create another. The reference rig specifies four powered
+hubs, and if all four hang off the same controller the whole array runs at about
+an ninth of the headline figure.</p>
+<p>So the number in our own comparison table is a ceiling nobody reaches, and we
+would rather say that here than let you find it after the parts arrive.</p>
+<h3>And the price</h3>
+<div class="tbl-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full Array kit</td>
+<td>$1,074</td>
+</tr>
+<tr>
+<td>A used desktop with 32 GB of RAM</td>
+<td>~$350</td>
+</tr>
+<tr>
+<td>Two multi-controller PCIe USB cards</td>
+<td>~$160</td>
+</tr>
+<tr>
+<td><strong>What it actually takes to run one</strong></td>
+<td><strong>~$1,584</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Against $4,700, that is about a third of the price rather than a quarter.
+And the DGX Spark is a computer that arrives working, where this is a box of
+parts plus a second computer you have to own, power, and find room for.</p>
+<hr>
 <h2>What you are actually comparing</h2>
 <p>Two numbers get confused constantly, and the whole decision turns on telling
 them apart.</p>
