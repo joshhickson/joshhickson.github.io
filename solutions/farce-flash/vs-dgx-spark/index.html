@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Should you buy this instead of an NVIDIA DGX Spark? — F.A.R.C.E. Flash</title>
+<meta name="description" content="The honest comparison, in plain language: what the capacity number means, what the speed number feels like, and what to buy instead.">
+<meta property="og:title" content="Should you buy this instead of an NVIDIA DGX Spark? — F.A.R.C.E. Flash">
+<meta property="og:description" content="The honest comparison, in plain language: what the capacity number means, what the speed number feels like, and what to buy instead.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0A0C0F">
+<link rel="icon" href="/solutions/farce-flash/assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="/solutions/farce-flash/assets/farce.css">
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<div class="top"><div class="wrap">
+<span>Farce Systems</span>
+<span><a href="/solutions/">jhickson.us/solutions</a></span>
+</div></div>
+<header class="masthead"><div class="wrap">
+<a class="brand" href="/solutions/farce-flash/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="A MicroSD card outline with a lightning bolt struck through it." class="dg"><style>.dg-t{font-family:'IBM Plex Mono',ui-monospace,monospace;fill:#7D8894;font-size:11px;letter-spacing:.08em}.dg-v{font-family:'IBM Plex Mono',ui-monospace,monospace;fill:#E4E8ED;font-size:13px}.dg-a{fill:#FFB020}</style><path d="M21.92,6 L50,6 L50,58 L14,58 L14,13.92 Z" fill="none" stroke="#E4E8ED" stroke-width="1"/><path d="M35,16 L23,36 L31,36 L27,50 L41,29 L33,29 Z" class="dg-a"/></svg><span>F.A.R.C.E. <span class="lo">Flash</span></span></a>
+<nav class="nav" aria-label="F.A.R.C.E. Flash"><a href="/solutions/farce-flash/">Overview</a><a href="/solutions/farce-flash/vs-dgx-spark/" aria-current="page">vs DGX Spark</a><a href="/solutions/farce-flash/kit/">Kits</a><a href="/solutions/farce-flash/report/">Report</a><a href="/solutions/farce-flash/openfarce/">OpenFARCE</a><a href="/solutions/farce-flash/faq/">FAQ</a><a href="/solutions/farce-flash/press/">Press</a><a class="nav-ext" href="https://github.com/joshhickson/openfarce">Source</a></nav>
+</div></header>
+<main id="main">
+<section class="sec"><div class="wrap">
+<p class="eyebrow"><span>Compare</span></p>
+<div class="prose"><h1>Should you buy this instead of an NVIDIA DGX Spark?</h1>
+<p class="cta-note"><a href="/solutions/farce-flash/report/">Read the report that says this does not work &#8594;</a></p><h2>No.</h2>
+<p>You are here because you want to run a large model on your own machine, you
+priced an NVIDIA DGX Spark at $4,700, and you started looking for
+something cheaper. That is a reasonable thing to do and we did the same thing,
+which is why this company exists.</p>
+<p>Buy the NVIDIA DGX Spark. If you cannot, buy nothing yet. What follows is the
+detail, because you should not take our word for it either.</p>
+<hr>
+<h2>What you are actually comparing</h2>
+<p>Two numbers get confused constantly, and the whole decision turns on telling
+them apart.</p>
+<p><strong>How much</strong> a machine can hold, and <strong>how fast</strong> it can reach it.</p>
+<div class="tbl-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>NVIDIA DGX Spark</th>
+<th>F.A.R.C.E. Flash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How much it holds</td>
+<td>128 GB unified</td>
+<td>1.28 TB</td>
+</tr>
+<tr>
+<td>How fast it reads</td>
+<td>&gt;500 GB/s</td>
+<td>~4.1 GB/s</td>
+</tr>
+</tbody>
+</table></div>
+<p>We win the first row by ten times. We lose the second by more than a hundred.</p>
+<p>The first number is the one on our posters. The second is the one you will
+actually feel, every second you use it. If you take one thing from this page,
+take that.</p>
+<h2>What "1.5-3.0 tok/s" feels like</h2>
+<p>Model speed is usually quoted in tokens per second. A token is roughly
+three-quarters of a word. Here is the same 500-word answer on both machines:</p>
+<div class="tbl-wrap" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>Time to write 500 words</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA DGX Spark</td>
+<td><strong>11 to 16 seconds</strong></td>
+</tr>
+<tr>
+<td>F.A.R.C.E. Flash</td>
+<td><strong>4 to 7 minutes</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Between 45-60 s pass before the first word appears at all, on a long prompt.</p>
+<p>Put another way: you read at about 250 words a minute. This machine writes at
+roughly <strong>a third to a half of the speed you read.</strong> You will finish each
+sentence before it does and wait for the next one.</p>
+<p>The Feasibility Report we commissioned describes it as:</p>
+<blockquote>
+<p>It is functionally the equivalent of watching a human type.</p>
+</blockquote>
+<p>We have not disputed that and we put it on the front page.</p>
+<h2>Three things people get wrong</h2>
+<p><strong>"More memory means bigger models."</strong> True. It does not mean faster, or even
+usable. A model that fits but generates at 1.5-3.0 tok/s is a model you will
+stop using by Thursday.</p>
+<p><strong>"1.28 TB for a quarter of the price is a good deal."</strong> Per
+gigabyte, yes, and that is the only measure by which it is one. Storage is
+cheap. Getting to it quickly is what costs money, and that is what you are
+declining to pay for here.</p>
+<p><strong>"It says memory, so it is memory."</strong> It is not. The array is exposed to the
+operating system as swap-backed block storage over USB. It is not RAM and does
+not perform like RAM. Your computer already does this with its hard drive when
+it runs out of memory, and you already know what that feels like.</p>
+<h2>What you would actually experience</h2>
+<p>You buy a kit of parts. Nothing arrives assembled and there is no circuit board
+in the box, because we do not sell one — you build it on perfboard yourself.</p>
+<p>Then you solder for a weekend. Then there is no software, because OpenFARCE is
+pre-alpha and is not included in anything we sell. Then, if you get it running,
+you wait 45-60 s for a first word and watch text appear more slowly than you
+read it.</p>
+<p>Then, after roughly <strong>~64 days of continuous use</strong>, the cards begin to wear
+out, because that is what happens to consumer flash under this workload. We sell
+replacements. That is not a workaround, it is the design.</p>
+<h2>What to buy instead</h2>
+<p>We would rather say this here than have you find out later.</p>
+<ul>
+<li><strong>You want to run large models locally and can afford it.</strong> Buy the NVIDIA DGX
+  Spark. It is an excellent machine and it will beat this by every measure we
+  publish.</li>
+<li><strong>You cannot afford it.</strong> Rent time on a hosted GPU. It will cost less than
+  this kit and work immediately.</li>
+<li><strong>You want a lot of fast storage on a small computer.</strong> Buy a $25 USB SSD. It
+  beats this array on write speed, random access, latency, endurance,
+  reliability and power draw, and ties it on sequential reads only because both
+  are limited by the same USB controller.</li>
+<li><strong>You want to understand why all of the above is true.</strong> Then keep reading.</li>
+</ul>
+<h2>So what is this for</h2>
+<p>Learning what the memory wall actually is, by building a machine that runs
+straight into it.</p>
+<p>Everything that makes this bad storage — slow, fragile, short-lived, forty
+separate devices that fail one at a time — is what makes it legible. An SSD
+hides all of it inside one chip. This does not hide anything. You can watch load
+spread across the array, watch a single card overheat and drag the rest down,
+pull one out and watch the whole thing stop.</p>
+<p>That is a real thing to own. It is not the thing on the poster.</p>
+<h2>What we have actually built</h2>
+<p>Not the array. Eight cards, not forty, in eight USB readers on one powered hub,
+attached to a Raspberry Pi. About $70 of parts.</p>
+<p>It is a working prototype of a thing we describe at five times the scale, and we
+would rather say that plainly than photograph it from a flattering angle. Every
+measurement it produces will carry the number of lanes it was measured on.</p>
+<p>Every figure on this page is the Feasibility Report's projection until that rig
+runs. None of them is a measurement yet.</p></div></div></section>
+</main>
+<footer class="foot"><div class="wrap"><div class="cols">
+<p class="legal">F.A.R.C.E. Flash is a satirical project. The Feasibility Report is real and concludes the architecture is impractical. Kits contain exactly the off-the-shelf parts listed and nothing else. No performance is promised. <a href="/solutions/farce-flash/disclaimer/">Full disclaimer</a>.</p>
+<nav aria-label="Footer"><a href="/solutions/farce-flash/">Overview</a><a href="/solutions/farce-flash/vs-dgx-spark/">vs DGX Spark</a><a href="/solutions/farce-flash/kit/">Kits</a><a href="/solutions/farce-flash/report/">Report</a><a href="/solutions/farce-flash/openfarce/">OpenFARCE</a><a href="/solutions/farce-flash/faq/">FAQ</a><a href="/solutions/farce-flash/press/">Press</a><a href="https://github.com/joshhickson/openfarce">Source</a><a href="/solutions/farce-flash/disclaimer/">Disclaimer</a></nav>
+</div>
+<p class="origin">Farce Systems &#183;
+<a href="/solutions/">jhickson.us/solutions</a></p>
+</div></footer>
+</body>
+</html>
