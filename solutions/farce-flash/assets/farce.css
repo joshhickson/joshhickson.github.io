@@ -519,3 +519,13 @@ figure:focus-visible, .tbl-wrap:focus-visible {
    `break-word` because only `anywhere` reduces the min-content width, which is
    what actually stops the overflow. */
 .prose a, .plain a, .qa a, .feat a { overflow-wrap: anywhere; }
+
+/* The hero's lead lines: what the product does, then the comparison. Set below
+   the tagline and above the schematic, quieter than the tagline and larger than
+   body copy, because they are the sentence the reader leaves with. */
+.hero .lead {
+  margin: var(--s5) 0 0; max-width: 46ch;
+  font-size: clamp(1rem, .92rem + .35vw, 1.18rem); line-height: 1.5;
+}
+.hero .lead + .lead { margin-top: var(--s3); color: var(--muted); }
+.hero .lead code { font-size: .92em; }
