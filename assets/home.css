@@ -77,6 +77,8 @@ h1 {
          letter-spacing: .08em; text-transform: uppercase; margin: 1.5rem 0 0; }
 .links a { color: var(--muted); text-decoration: none; }
 .links a:hover { color: var(--ink); }
+/* A domain is read, not scanned as a label: keep it in the case it is typed. */
+.links a.site { text-transform: none; letter-spacing: .02em; }
 
 .sol-foot { margin-top: 3rem; font: 400 .74rem/1 var(--mono);
             letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
